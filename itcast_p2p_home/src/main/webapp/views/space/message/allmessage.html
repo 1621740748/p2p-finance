@@ -1,0 +1,29 @@
+<div id="mainarea">
+    <div class="titleheader">
+        <h2>站内信息</h2>
+    </div>
+    <!--tab-->
+    <div class="u_tab_bar">
+        <h4>状态</h4>
+        <ul class="u_tabMenu">
+            <li><a class="cur" ui-sref="space.allmsg">全部</a></li>
+            <li><a ui-sref="space.readingmsg">未读</a></li>
+            <li><a ui-sref="space.readedmsg">已读</a></li>
+        </ul>
+    </div>
+    <!--tab end-->
+    <div class="message_dl container">
+        <!--消息-->
+        <div class="box" style="text-align: center;" ng-if="Msg" ng-bind="Msg"></div>
+        <dl ng-repeat="item in list">
+            <dt><a href="javascript:;" msgtoggle ng-click="setReaded(item.s_receive_user_id,item.id)" id="msg_{{item.id}}" _data ="{{item.messageState}}">展开 ∨</a><span>系统消息<em class="c_red f12" ng-if="item.messageState == 0" id="mg_{{item.id}}">New</em></span><b ng-bind="item.sendTime"></b></dt>
+            <dd>
+                <div class="box" ng-bind="item.messageContent"></div>
+            </dd>
+        </dl>
+        <!--消息 end-->
+    </div>
+</div>
+<div ng-if="totalItems" class="fr">
+    <pagination ng-change="getList(currentPage,type)" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false"  rotate="false" first-text="首页" last-text="尾页" previous-text="上一页" next-text="下一页"></pagination>
+</div>
