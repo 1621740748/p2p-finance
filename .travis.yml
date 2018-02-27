@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - oraclejdk8
+  - oraclejdk7
 ## Use this to prepare the system to install prerequisites or dependencies
 #before_install: "sudo apt-get update"
 #install: true
